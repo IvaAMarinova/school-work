@@ -66,8 +66,8 @@ class Polyline:
 
 
 if __name__ == '__main__':
-    'Draws shapes usign Turtle module'
-    poly = Polyline([Point(100, 150), Point(150, 200), Point(200, -50)])
+    'Draws polygons by given points usign Turtle module'
+    poly = Polyline([Point(100, 150), Point(150, 200), Point(200, -50), Point(300, -150)])
 
     print(poly)
 
@@ -77,7 +77,7 @@ if __name__ == '__main__':
     poly.delete_special_point(2)
     print(poly)
 
-    poly.add_point(Point(150, 150))
+    poly.add_point(Point(100, 150))
     print(poly)
 
     poly.draw()

@@ -38,31 +38,6 @@ are_there_double([[1, 0, 3], [4, 5, 6], [3, 7, 1], [5, 7, 4]])
 
 
 
-'reads from a text file and writes in another file every line that has a given string (alse reverses said line)'
-def reverse(s):
-    return s[::-1]
-
-
-def searched_word(given_str):
-    f1 = open("text.txt", "r")
-    f2 = open(given_str + ".txt", "w")
-
-    for line in f1:
-        if given_str in line:
-            if line[-1] == "\n":
-                line = line[:-1]
-
-            f2.write(reverse(line))
-            f2.write("\n\n")
-
-    f1.close()
-    f2.close()
-
-
-searched_word(input("Find me: ")) 
-
-
-
 'returns digits of number in a list'
 def to_digits(number):
     result = []
@@ -257,3 +232,157 @@ print(gas_station(distance, tank_size, stations))
 
 
 
+'prints two list at the same time together'
+def print_two_lists(list1, list2):
+    len2, len1 = len(list1), len(list2)
+
+    if len1 < len2:
+        length = len1
+    else:
+        length = len2
+
+    j = len2 - 1
+
+    for i in range(length):
+        print(list1[i], list2[j])
+        j -= 1
+
+
+print_two_lists([10, 20, 30, 40], [100, 200, 300, 400])
+print(".")
+print_two_lists([10, 20, 30], [100, 200, 300, 400])
+print(".")
+print_two_lists([10], [100])
+
+
+
+'permutates two lists'
+def permutation_list(list1, list2):
+    new_list = []
+    len2, len1 = len(list1), len(list2)
+
+    if len1 < len2:
+        length = len1
+    else:
+        length = len2
+
+    for i in range(length):
+        for j in range(length):
+            temp_list = []
+            temp_list.append(list1[i])
+            temp_list.append(list2[j])
+            new_list.append(temp_list)
+            
+    print(new_list)
+
+
+permutation_list(["Hello", "take"], ["Dear", "Sir"])
+permutation_list(["take", "Hello"], ["Dear", "Sir"])
+
+    
+
+'returns searched elements from dict in a new dict'
+def searched_elements(dict, keys):
+    new_dict = {k: dict[k] for k in keys}
+    print(new_dict)
+
+searched_elements({
+    "name": "Kelly",
+    "age": 25,
+    "salary": 8000,
+    "city": "New York"
+}, ["name", "salary"])
+
+print(".")
+
+searched_elements({
+    "name": "Kelly",
+    "age": 25,
+    "salary": 8000,
+    "city": "New York"
+}, ["city", "salary"])
+
+
+
+'prints lowest value from dict'
+def min_value(sample_dict):
+    min = int(list(sample_dict.values())[0])
+
+    for value in sample_dict.values():
+        if value < min:
+            min = value
+
+    for key,value in sample_dict.items():
+        if value == min:
+         print(key)
+
+if __name__ == '__main__':
+    min_value({
+        'Physics' : 82,
+        'Math': 65,
+        'history': 75
+    })
+    print(".")
+    min_value({
+        'Physics' : 80,
+        'Math': 90,
+        'history': 80
+    })
+    min_value({ 
+        'Physics' : 0,
+        'Math': 212230,
+        'history': 120
+    })
+
+
+
+'prints numbers from tuple'
+def print_single(t):
+    (a, b, c, d) = t
+
+    print(a)
+    print(b)
+    print(c)
+    print(d)
+
+if __name__ == '__main__':
+    print_single((10, 20, 30, 40))
+    print(".")
+    print_single((129273, -1, 320, 410))
+    
+
+'sorts a tuple'
+def sort_tuple(tuple1):
+    tuple1 = tuple(sorted(list(tuple1), key=lambda x: x[1]))
+    print(tuple1)
+
+
+sort_tuple((('a', 23), ('b', 37), ('c', 11), ('d', 29)))
+sort_tuple((('a', 2023), ('b', 32347), ('c', 12341), ('d', 29234), ('d', 39234)))
+sort_tuple((('a', 1), ('b', 0), ('c', 1), ('d', 2)))
+
+
+
+'turns a list into a set'
+def list_to_set(list, set):
+    set.update(list)
+    print(set)
+
+list_to_set(["Blue", "Green", "Red"], {"Yellow", "Orange", "Black"})
+list_to_set(["Blue"], {"Black"})
+list_to_set(["Iva", "is", "writing"], {"her homework", "the same", "day", "in", "which", "she has to", "turn it in"})
+
+
+'returns a set with duplicate numbers'
+def identical_items(set1, set2):
+    new_set = set1.intersection(set2)
+    if new_set == set():
+        print("No duplicates")
+    else: 
+        print(new_set)
+   
+
+identical_items({10, 20, 30, 40, 50}, {30, 40, 50, 60, 70})
+identical_items({10, 20, 30}, {30, 40, 50, 60, 70})
+identical_items({10}, {30, 40, 50, 60, 70})
+    
