@@ -13,5 +13,4 @@ void main()
 {
 	char buffer[100];
 	strcpy(buffer, "Hello");
-
 }

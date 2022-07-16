@@ -28,9 +28,8 @@ void title_cap(char* s)
     }
 }
 
-int main()
+void main()
 {
     char s[] = "one TWO tHrEe fOUR";
-
     title_cap_trim_longest(s);
 }

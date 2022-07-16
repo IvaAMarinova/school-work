@@ -18,10 +18,9 @@ void trim_spaces(char* s)
     *p = 0;
 }
 
-main()
+void main()
 {
     char s[] = "  one TWO  tHrEe    fOUR ";
-
     trim_spaces(s);
 }
 

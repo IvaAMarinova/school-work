@@ -1,25 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int math(int);
-int main()
-{
-    int given_number, answer;
-
-    do {
-        printf("Number = x^2: ");
-        scanf("%d", &given_number);
-    } while (given_number < 0 && given_number > 65000);
-
-
-    answer = math(given_number);
-    if (answer != 0) {
-        printf("Answer = %d", answer);
-    }
-    else printf("There is no answer chao");
-
-    return 0;
-}
 int math(int x)
 {
     int result, lower_num = 2, higher_num = x / 2, middle;
@@ -46,4 +27,21 @@ int math(int x)
         return 0;
     }
     return result;
+}
+
+void main()
+{
+    int given_number, answer;
+
+    do {
+        printf("Number = x^2: ");
+        scanf("%d", &given_number);
+    } while (given_number < 0 && given_number > 65000);
+
+
+    answer = math(given_number);
+    if (answer != 0) {
+        printf("Answer = %d", answer);
+    }
+    else printf("There is no answer chao");
 }

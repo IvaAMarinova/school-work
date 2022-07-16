@@ -5,21 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int super_cool_math_actions(unsigned);
-
-int main()
-{
-    unsigned int given_num, current = 1;
-
-    do {
-        printf("Whats your num: ");
-        scanf("%d", &given_num);
-    } while (given_num < 0 && given_num > 65000);
-
-    printf("The answer is: %d", super_cool_math_actions(given_num));
-
-    return 0;
-}
 int super_cool_math_actions(unsigned int given_num)
 {
     unsigned int current = 1;
@@ -34,4 +19,16 @@ int super_cool_math_actions(unsigned int given_num)
         }
 
     return current;
+}
+
+void main()
+{
+    unsigned int given_num, current = 1;
+
+    do {
+        printf("Whats your num: ");
+        scanf("%d", &given_num);
+    } while (given_num < 0 && given_num > 65000);
+
+    printf("The answer is: %d", super_cool_math_actions(given_num));
 }

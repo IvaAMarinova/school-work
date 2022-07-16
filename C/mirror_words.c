@@ -36,7 +36,7 @@ void mirror_words(char* s)
     }
 }
 
-int main()
+void main()
 {
     char s1[] = "one two three four";
     mirror_words(s1);

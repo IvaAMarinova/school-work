@@ -28,7 +28,7 @@ void qsort(int* left, int* right)
 	}
 }
 
-main()
+void main()
 {
 
 	int a1[] = { 100, 20, 200, 30, 300, 40, 400, 50 };

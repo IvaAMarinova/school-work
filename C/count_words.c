@@ -35,6 +35,5 @@ unsigned count_words(const char* s)
 void main()
 {
 	char s[] = "One  Two  Three Four ";;
-	
 	count_words(s);
 }

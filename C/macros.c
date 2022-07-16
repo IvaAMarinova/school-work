@@ -32,6 +32,7 @@ const char to_lower[256] = { L4_lower(0) };
 #define L4_upper(x) L3_upper(4*(x)+0) L3_upper(4*(x)+1) L3_upper(4*(x)+2) L3_upper(4*(x)+3)
 
 const char to_upper[256] = { L4_upper(0) };
+
 void main()
 {
 	is_num['5'];

@@ -72,7 +72,7 @@ cmp_long_long(const void* l, const void* r)
 	return *left - *right;
 }
 
-main(void)
+void main(void)
 {
 	char a1[] = "AZBYCXDE";
 	q_sort(a1, DIM(a1) - 1, sizeof * a1, cmp_char);
