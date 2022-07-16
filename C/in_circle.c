@@ -14,7 +14,7 @@ int in_circle(int Cx, int Cy, int r, int x, int y)
 	else return 0;
 }
 
-int main()
+void main()
 {
 	if (in_circle(2, 1, 3, 5, 1)) {
 		printf("True\n");
@@ -30,5 +30,4 @@ int main()
 		printf("True\n");
 	}
 	else printf("no\n");
-
 }
