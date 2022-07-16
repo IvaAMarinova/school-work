@@ -20,7 +20,6 @@ int sum_recursion(int n){
         return n + sum_recursion(n - 1);
         else
             return n;
-
 }
 
 int pow(float a, int n, float result){
@@ -39,71 +38,57 @@ int pow_recursion(int a, int result, int n){
     return stepen(a, a * result, n - 1);
 }
 
-
 int p_bin(int a, int result, int n) {
     if(a == 0)
         return result;
     return p_bin(a / 2, (a % 2) * (n) + result, n * 10);
 }
 
-#include <stdio.h>
-#include <stdlib.h>
-
-
-int print_one_hundred()
+void print_one_hundred()
 {
-    int i;
-
-    for(i = 0; i < 100; i++){
-        printf("hi sisters\n");
-    }
-    return 0;
+    for(int i = 0; i < 100; i++) printf("hi sisters\n");
 }  
 
-int print_backward_digits()
+void print_backward_digits()
 {
     int i;
 
     for(i = 100; i > 0; i--){
         printf("%d  ", i);
     }
-    return 0;
 }
 
-int print_n_times()
+void print_n_times()
 {
     int i, n;
     printf("n:");
     scanf("%d", &n);
 
     for(i = 0; i < n; i++){
-        printf("eyo!  ");
+        printf("Hello world!  ");
     }
-    return 0;
 }
 
-int print_even_numbers_to_100()
+void print_even_numbers_to_100()
 {
     int i;
     for(i = 0; i < 100; i++){
         if(i % 2 == 0)
             printf("%d ", i);
     }
-    return 0;
 }
 
-int print_odd_numbers_to_100()
+void print_odd_numbers_to_100()
 {
     int i;
     for(i = 0; i < 100; i++){
         if(i % 2 != 1)
             printf("%d ", i);
     }
-    return 0;
 }
 
 
-int print_even_numbers_to_n()
+void print_even_numbers_to_n()
 {
     int i, n;
 
@@ -114,9 +99,9 @@ int print_even_numbers_to_n()
         if(i % 2 == 0)
             printf("%d ", i);
     }
-    return 0;
 } 
-int print_odd_numbers_to_n()
+
+void print_odd_numbers_to_n()
 {
     int i, n;
 
@@ -127,7 +112,6 @@ int print_odd_numbers_to_n()
         if(i % 2 == 1)
             printf("%d ", i);
     }
-    return 0;
 }
 
 int check_even()
@@ -138,26 +122,14 @@ int check_even()
     scanf("%d", &n);
 
     if(n % 2 == 0)
+    {
         printf("yes");
-        else printf("no");
+        return 1;
+    }     
+    printf("no");
     return 0;
 
 }
-
-int check_devides_by_3()
-{
-    int n;
-
-    printf("your num: ");
-    scanf("%d", &n);
-
-    if(n % 3 == 0)
-        printf("yes");
-        else printf("no");
-    return 0;
-
-}
-
 
 int check_devides_by_5()
 {
@@ -167,13 +139,13 @@ int check_devides_by_5()
     scanf("%d", &n);
 
     if(n % 5 == 0)
+    {
         printf("yes");
-        else printf("no");
+        return 1;
+    }     
+    printf("no");
     return 0;
-
 }
-
-
 
 int check_simple_num()
 {
@@ -186,15 +158,15 @@ int check_simple_num()
 
     for(i = 2; i < n; i++){
         if (n % i == 0) {
-            printf("This number is not prosto");
-            return;
+            printf("This number is not simple");
+            return 0;
         }
     }
-    printf("This number is prosto");
-    return 0;
+    printf("This number is simpleo");
+    return 1;
 }
 
-int swap_one()
+void swap_one()
 {
     int a, b, c;
 
@@ -208,10 +180,9 @@ int swap_one()
     b = c;
 
     printf("new numbers are a = %d, b = %d", a, b);
-    return 0;
 }
 
-int swap_two()
+void swap_two()
 {
     int a, b;
 
@@ -225,11 +196,9 @@ int swap_two()
     a = a - b;
 
     printf("new numbers are a = %d, b = %d", a, b);
-    return 0;
 }
 
-
-int ascii_n()
+void ascii_n()
 {
     char a;
     printf("num:");
@@ -237,7 +206,8 @@ int ascii_n()
     printf("%d",a);
 }
 
-int figure()
+// prints a simple figure 
+void figure()
 {
     int i, a;
 
@@ -253,14 +223,7 @@ int figure()
     }
 }
 
-#include <stdio.h>
-#include <stdlib.h>
-/*
-От N на брой числа изведете най-голямото и най-малкото.
-a. Пазете числата в масив
-b. прочетете ги от екрана
-*/
-int min_and_max()
+void min_and_max()
 {
     int array[100];
     int min, max, n, i, a;
@@ -307,7 +270,7 @@ struct point {
     int y;
 };
 
-int what_quadrant()
+void what_quadrant()
 {
     struct point pt;
 
@@ -333,49 +296,18 @@ int what_quadrant()
 int multiplication(int a, int b)
 {
     int b, a;
-    if (b != 1){
-        a = a + multiplication(a, b - 1);
-    }
-
+    if (b != 1) a = a + multiplication(a, b - 1);
     return a;
 }
 
-#include <stdio.h>
-#include <stdlib.h>
-
 int sum_rec(int n)
 {
-    int s;
-    s = n;
-
-    if(s != 0) {
-        s = n + fact(n - 1);
-    }
-
+    int s = n;
+    if(s != 0) s = n + fact(n - 1);
     return s;
-
 }
-*/
-/*
-//if a num contains a digit
-int fact(int, int);
-int main()
-{
-    int a, b;
 
-    printf("gimme your number:\n");
-    scanf("%d", &a);
-    printf("gimme your digit\n");
-    scanf("%d", &b);
-
-
-    if(fact(a, b)){
-        printf("yes");
-    } else printf("no");
-
-    return 0;
-}
-int fact(int a, int b)
+int num_contains_digit(int a, int b)
 {
     if (a % 10 == b)
         return 1;
@@ -384,28 +316,117 @@ int fact(int a, int b)
     else
         return fact(a / 10, b);
 }
-*/
-// multiplication by summing
-int fact(int a,int b);
-int main()
+
+// finds given character and prints all characters after that
+int find_char()
 {
-    int a,b;
+    char str[100], wanted, buffer[100];
 
-    printf("gimme first num\n");
-    scanf("%d", &a);
-    printf("gimme second num\n");
-    scanf("%d",&b);
-    printf("\n");
+    printf("Give me your string: ");
+    scanf("%s", &str);
 
-    printf("answer equals to %d", fact(a,b));
+    printf("Gimme your wanted symbol: ");
+    getchar();
+    wanted = getchar();
 
-    return 0;
-}
-int fact(int a, int b)
-{
-    if(b != 1)
-    {
-        a = a + fact(a, b - 1);
+    int lenght = strlen(str);
+
+    for (int i = 0; i < length; i++) {
+        if (wanted == str[i]) {
+            printf("You have a matching character in %d position\n", i + 1);
+            for (int j = 0; str[i] != '\0'; j++, i++) {
+                buffer[j] = str[i + 1];
+            }
+            printf("The rest of the string is: %s\n", buffer);
+        }
+        if ((i + 1) == lenght) {
+            printf("There is no answer, sorry");
+            return 0;  
+        }
     }
-    return a;
+    return 1;
+}
+
+int max_num()
+{
+    int a, b, c, max;
+
+    printf("number 1:");
+    scanf("%d", &a);
+    printf("number 2:");
+    scanf("%d", &b);
+    printf("number 3:");
+    scanf("%d", &c);
+
+    if (a > b) max = a;
+    else max = b;
+    if (c > max)
+        max = c;
+
+    printf("max number = %d", max);
+    return max;
+}
+
+void simple_dividers()
+{
+    int n, c = 0, i = 2, j;
+
+    do {
+        printf("num = ");
+        scanf("%d", &n);
+    } while (n <= 1);
+
+    while(n >= i){
+        if(n % i == 0){
+            j = 2;
+            while(i % j > 0)
+                j++;
+            if (j == i) {
+                printf("%d is a simple devider\n", i);
+                c++;
+            }
+
+        }
+        i++;
+    }
+    printf ("The number has this many %d simple deviders\n", c);
+}
+
+void guess_random_num()
+{
+    int given_num, chosen_num;
+
+    for(int i = 0; i < 1; i++) chosen_num = rand() % 100;
+
+    printf("Your number (it must be >0 and <100): ");
+    scanf("%d", &given_num);
+
+    if(given_num == chosen_num) printf("Congratulations! You were right!");
+    else if (given_num < chosen_num) printf("Oops, your number is too low.");
+    else if (given_num > chosen_num) printf("Oops, your number is too high.");
+}
+
+float avr_grade()
+{
+    int n, i;
+    float a, sum, avr;
+
+    do{
+        printf("n =");
+        scanf("%d", &n);
+    }while(n < 0);
+
+    sum = 0;
+    i = 1;
+
+    while(i <= n){
+        printf("new grade: ");
+        scanf("%f", &a);
+        sum = sum + a;
+        i++;
+    }
+    avr = sum / n;
+
+    printf("avr = %f", avr);
+    return avr;
 }

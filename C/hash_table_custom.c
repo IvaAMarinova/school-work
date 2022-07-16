@@ -1,3 +1,5 @@
+// 9 klas
+
 // hash table for custom element given by user
 
 struct hash_item

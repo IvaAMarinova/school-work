@@ -1,3 +1,5 @@
+// 8 klas
+
 // my first tic tac toe from 2021
 
 // it's important to note that the way i calculate the smart move
