@@ -74,3 +74,56 @@ Oтиваме на първия компютър Desktop->Command Prompt и пи
 ## Свързване на две мрежи.
 
 _На R1 да се конфигурира статичен път по подразбиране (който да обхваща всички възможни мрежи) и да има за Next-Hop адрес адреса на G0/1 на R2. R2 да се конфигурира път към LAN1 с Next-Hop адрес адреса на G0/1 на R1_
+
+1. В първия рутер R1 влизаме в CLI.
+2. Стигаме до режим Router(config)# и изпълняваме командата:
+
+    ip route _destip destmask ip_
+
+    > Вместо _destip_ пишем 0.0.0.0, вместо _destmask_ 0.0.0.0, а вместо _ip_ адреса на другия рутер    
+    >> Внимавайте кой адрес на рутера избирате (g0/0 или g0/1)
+
+За да проверим дали всичко е наред излизаме от конфигурационен режим и използваме командата show ip route (режим Router#). За да работи трябва да се е появил адрес с код __S*__ (като този на последния ред): 
+
+<c>
+
+    Gateway of last resort is 10.10.2.130 to network 0.0.0.0
+
+        10.0.0.0/8 is variably subnetted, 4 subnets, 3 masks
+    C       10.10.0.0/23 is directly connected, GigabitEthernet0/0
+    L       10.10.0.1/32 is directly connected, GigabitEthernet0/0
+    C       10.10.2.128/30 is directly connected, GigabitEthernet0/1
+    L       10.10.2.129/32 is directly connected, GigabitEthernet0/1
+    S*   0.0.0.0/0 [1/0] via 10.10.2.130
+<c>
+
+3. Отиваме на втория рутер R2 и правим същото като при R1, само че в командата:
+    _destip_ - адреса на LAN1
+    _destmask_ - маска на LAN1
+    _ip_ - IP адреса на другия рутер R1
+
+За да проверим дали всичко е наред излизаме от конфигурационен режим и използваме командата show ip route (режим Router#). За да работи трябва да се е появил адрес с код __S__ (като този на третия ред):
+
+<c>
+
+    Gateway of last resort is not set
+
+        10.0.0.0/8 is variably subnetted, 5 subnets, 4 masks
+    S       10.10.0.0/23 [1/0] via 10.10.2.129
+    C       10.10.2.0/25 is directly connected, GigabitEthernet0/0
+    L       10.10.2.1/32 is directly connected, GigabitEthernet0/0
+    C       10.10.2.128/30 is directly connected, GigabitEthernet0/1
+    L       10.10.2.130/32 is directly connected, GigabitEthernet0/1
+
+<c>
+
+## Тестване на свързаност между два компютъра
+
+1. Влизаме в първия компютър и пингваме втория 
+2. Влизаме във втория компютър и пингваме първия
+
+> Ако вс е наред пинговете ще минат
+
+## Това беше от мен за днес!! 
+
+Кредит към [Божидар](https://github.com/bvpav), който ме научи как да ги правя тези, и написа таблицата с командите и техните съкращения!
