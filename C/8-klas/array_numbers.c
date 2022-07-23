@@ -23,7 +23,7 @@ int main()
         }
     }
     for(t = 0; t < count; t++)
-    printf("%d", item[t]);
+        printf("%d", item[t]);
 
     return 0;
 }

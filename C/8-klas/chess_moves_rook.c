@@ -4,7 +4,7 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include<time.h>
-int movesRook(int, int);
+int moves_rook(int, int);
 
 int main() {
 
@@ -14,14 +14,14 @@ int main() {
     x = 1 + (rand() % 8);
     y = 1 + (rand() % 8);
 
-    ans = movesRook(x, y);
+    ans = moves_rook(x, y);
 
     printf("position rook - %d/%d has %d moves!", x, y, ans);
 
     return 0;
 }
 
-int movesRook(int x, int y)
+int moves_rook(int x, int y)
 {
 
     int br = 0;
