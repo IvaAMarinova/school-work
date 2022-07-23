@@ -40,30 +40,35 @@
 
 ### Пингване на комплютър с неговия рутер.
 
-1. Oтиваме на първия компютър Desktop->Command Prompt и пишем командата:
+Oтиваме на първия компютър Desktop->Command Prompt и пишем командата:
 
     ping (адреса на рутера в неговата мрежа)
-    пример: ping 6.9.4.2
+> Пример: ping 6.9.4.2
 
-    > Внимавайте кой адрес на рутера избирате (g0/0 или g0/1)
+> Внимавайте кой адрес на рутера избирате (g0/0 или g0/1)
+
+Ако всичко работи ще изглежда подобно на това:
 
 <c>  
 
     Cisco Packet Tracer PC Command Line 1.0
-    C:\>ping 10.10.0.1
+    C:\>ping 6.9.4.2
 
-    Pinging 10.10.0.1 with 32 bytes of data:
+    Pinging 6.9.4.2 with 32 bytes of data:
 
-    Reply from 10.10.0.1: bytes=32 time=20ms TTL=255  
-    Reply from 10.10.0.1: bytes=32 time<1ms TTL=255  
-    Reply from 10.10.0.1: bytes=32 time<1ms TTL=255  
-    Reply from 10.10.0.1: bytes=32 time<1ms TTL=255  
+    Reply from 6.9.4.2: bytes=32 time=20ms TTL=255  
+    Reply from 6.9.4.2: bytes=32 time<1ms TTL=255  
+    Reply from 6.9.4.2: bytes=32 time<1ms TTL=255  
+    Reply from 6.9.4.2: bytes=32 time<1ms TTL=255  
 
-    Ping statistics for 10.10.0.1:
+    Ping statistics for 6.9.4.2:
         Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
     Approximate round trip times in milli-seconds:
         Minimum = 0ms, Maximum = 20ms, Average = 5ms
 
     C:\>
-    
+
 <c>
+
+> Идейно е да имаме _(0% loss)_, но дори да не е толкова е все още възможно да работи, преди да се откажете винаги пингнете по няколко пъти.
+
