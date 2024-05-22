@@ -1,3 +1,5 @@
-# school-work
-Не съм отговорна за колко зле някои части от кода изглеждат :), нека просто всички си затворим очите.
-Пускайте issues ако намерите грешки или неработещи неща!!
+# 📚 School Work Repository
+
+Welcome to my **School Work** repository! This is a collection of various projects, assignments, and notes from my academic journey in TUES. 
+
+📝 Here you can find different things I've done in school in the past **four years** for our various classes!
