@@ -1,3 +1,5 @@
+// Реализирайте операции с дълги числа на асемблер
+
 extern "C"
 {
     void add(long long* res, const long long* l, const long long* r, size_t cnt);
