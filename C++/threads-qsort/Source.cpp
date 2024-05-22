@@ -1,3 +1,5 @@
+// Задача: Реализирайте quick sort с паралелно изпълнение на нишки.
+
 #include <iostream>
 #include <list>
 #include <thread>
