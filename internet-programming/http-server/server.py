@@ -12,7 +12,6 @@ server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 server_socket.bind((SERVER_HOST, SERVER_PORT))
 server_socket.listen(5)
-server_socket.setblocking(False)
 print('Listening on port %s ...' % SERVER_PORT)
 
 def is_valid_header(line):
@@ -21,14 +20,8 @@ def is_valid_header(line):
 try:
     while True:
         try:
-            try:
-                client_connection, client_address = server_socket.accept()
-                print(f"Connection from {client_address}")
-            except socket.error as e:
-                if e.errno == errno.EWOULDBLOCK or e.errno == errno.EAGAIN:
-                    continue
-                else:
-                    raise
+            client_connection, client_address = server_socket.accept()
+            print(f"Connection from {client_address}")
 
             request_data = b''
             header_size = 0
