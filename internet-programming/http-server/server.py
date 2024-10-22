@@ -41,20 +41,20 @@ try:
                         header_size += chunk_length
 
                         if header_size > MAX_SIZE:
-                            print("Header size exceeds 10MB. Closing connection.")
-                            client_connection.close()
-                            break
+                            raise ValueError("Header size exceeds 10MB")
 
                         if b"\r\n\r\n" in chunk:
                             headers_done = True
 
                             end_of_headers_index = chunk.index(b"\r\n\r\n") + 4
                             body_size += (chunk_length - end_of_headers_index)
-
+                           
                             if body_size > MAX_SIZE:
-                                print("Body size exceeds 10MB. Closing connection.")
-                                client_connection.close()
-                                break
+                                raise ValueError("Body size exceeds 10MB")
+                    else:
+                        body_size += chunk_length
+                        if body_size > MAX_SIZE:
+                            raise ValueError("Body size exceeds 10MB")
 
                 except socket.error as e:
                     if e.errno == errno.EWOULDBLOCK or e.errno == errno.EAGAIN:
@@ -70,19 +70,29 @@ try:
             request = request_data.decode()
 
             try:
-                print(parser(request))
+                parser_result = parser(request)
+                print("Method: ", parser_result["method"])
+                print("Headers: ", parser_result["headers"])
+
+                if "body" in parser_result:
+                    print("Body: ", parser_result["body"])
+                print("//////////////////////////////////////////////////////")
             except ValueError as e:
-                print(f"Invalid request: {e}")
+                print(f"Invalid request - {e}")
                 client_connection.close()
                 continue
 
             client_connection.close()
 
+        except ValueError as size_error:
+            print(f"Error: {size_error}. Closing server.")
+            break
+
         except Exception as e:
             print(f"Error handling client connection: {e}")
 
-except:
-    print("Server shut down due to an error")
+except Exception as e:
+    print(f"Server shut down due to an error: {e}")
 
 finally:
     server_socket.close()

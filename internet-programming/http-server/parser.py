@@ -1,29 +1,46 @@
 def parser(request):
+    # Split request into lines
     request_lines = request.split("\r\n")
-    request_sorted = {"method": (), "headers": {}, "body": ""}
 
+    if not request_lines or len(request_lines) < 1:
+        raise ValueError("Empty request received")
+
+    # Initialize variables
+    method = None
+    headers = {}
+    body = ""
+
+    for line in request_lines:
+        if not are_valid_request_characters(line):
+            raise ValueError(f"Invalid characters in request - line: {line}")
+
+    # Try to parse the request line (method, path, version)
     try:
-        method, path, version = request_lines[0].split()
+        method_line = request_lines[0].split()
+        method, path, version = method_line
     except ValueError:
         raise ValueError("Invalid request line: Could not parse method, path, and version")
 
+    # Validate HTTP method
     valid_methods = ["GET", "POST", "PATCH", "PUT", "DELETE"]
     if method not in valid_methods:
         raise ValueError("Invalid method in request")
 
-    request_sorted["method"] = (method)
-    
+    # Validate HTTP version
     if not version.startswith("HTTP/"):
         raise ValueError("Invalid version format in request")
-    
+
     header_section = True
+
     for line in request_lines[1:]:
         line = line.strip()
 
+        # Empty line indicates the transition from headers to body
         if line == "" and header_section:
             header_section = False
             continue
 
+        # Processing headers
         if header_section:
             if ':' not in line or len(line.split(':', 1)) != 2:
                 raise ValueError(f"Invalid header line in request: {line}")
@@ -31,20 +48,35 @@ def parser(request):
             key, data = line.split(':', 1)
             key = key.strip()
             data = data.strip()
-            
+
             if not key or not data:
                 raise ValueError(f"Invalid structure in request (missing key or data): {line}")
             else:
-                request_sorted["headers"][key] = data
+                headers[key] = data
         else:
-            request_sorted["body"] += line + "\n"
+            # Append to body
+            body += line + "\n"
+
+    # Construct the return value
+    request_sorted = {
+        "method": method,
+        "headers": headers
+    }
+
+    # Only include body if it's non-empty
+    if body.strip():
+        request_sorted["body"] = body.strip()
 
     return request_sorted
 
 def are_valid_request_characters(string):
     allowed_characters = set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_ :;.,\\/\"'?!(){}[]@<>=-+*#$&`|~^%")
-    return all(char in allowed_characters for char in string)
-
+    
+    for char in string:
+        if char not in allowed_characters and char != '\n':
+            print(f"Invalid character found: {repr(char)}")
+            return False
+    return True
 
 request = """GET /docssssss/tutorials/linux/shellscripts/howto.html HTTP/1.1\r\n
 Host: Linode.com\r\n
@@ -71,5 +103,3 @@ Accept:application/json\r\n
   }\r\n
 }\r\n
 """
-
-# parser(request2)
