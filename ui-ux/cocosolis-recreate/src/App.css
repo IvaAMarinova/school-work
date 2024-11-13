@@ -1,0 +1,52 @@
+.header-container {
+  @apply fixed top-0 w-full bg-white z-50 flex justify-between items-center px-4 py-2;
+  /* border: 2px solid red; Temporary debug style */
+}
+
+.header-logo {
+  @apply w-24 lg:w-48 transition-transform duration-300 ease-in-out;
+}
+
+.banner-container {
+  @apply w-full bg-[#F0D8CA] flex flex-col items-center justify-center py-16;
+}
+
+.banner-title {
+  @apply text-4xl md:text-5xl font-semibold tracking-wide text-[#664164];
+}
+
+.banner-button {
+  @apply mt-4 px-10 py-2 text-lg font-medium text-white bg-[#664164] transition-colors duration-200;
+}
+
+.banner-button:hover {
+  @apply bg-[#895786];
+}
+
+.product-list {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 md:p-8;
+}
+
+.product-card {
+  @apply border border-gray-200 overflow-hidden bg-white transition-transform duration-300 ease-in-out;
+}
+
+.product-image {
+  @apply w-full h-64 object-cover;
+}
+
+.product-title {
+  @apply text-lg font-semibold mt-4 px-4 text-center;
+}
+
+.product-price {
+  @apply text-base font-semibold text-gray-700 mt-2 px-4 text-center;
+}
+
+.product-add-to-cart {
+  @apply mt-4 mb-4 mx-auto px-6 py-2 bg-[#664164] text-white rounded-lg font-medium transition-colors duration-200;
+}
+
+.product-add-to-cart:hover {
+  @apply bg-[#895786];
+}
